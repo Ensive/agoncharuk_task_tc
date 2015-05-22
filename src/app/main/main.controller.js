@@ -18,7 +18,8 @@
 
     // submitting the form
     function submit(pennies) {
-      //console.log(pennies);
+
+      //Parse(pennies);
       Convert(pennies);
     }
 

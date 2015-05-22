@@ -8,6 +8,7 @@
     .factory('Convert', ConvertService);
 
   function ConvertService() {
+    // available coins
     var coins = [
       200,
       100,
@@ -19,6 +20,7 @@
 
     return Convert;
 
+    // converting
     function Convert(pennies) {
       // define empty array
       var coinsArray = [];
@@ -37,6 +39,7 @@
 
       }
       // end for
+
       console.log(coinsArray);
       return coinsArray;
     }

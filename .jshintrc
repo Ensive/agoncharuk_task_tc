@@ -18,6 +18,7 @@
   "smarttabs": true,
   "white": true,
   "validthis": true,
+  "latedef": true,
   "globals": {
     "angular": false,
     // Angular Mocks
