@@ -1,10 +1,29 @@
+// variables
 $background = #CCCCFF
-$text = #001F89
+$text = #00046C
+
+// mixins
+cf()
+  zoom 1
+  &::after
+  &::before
+    content ''
+    display table
+  &::after
+    clear both
+
+// base styles
+*
+  box-sizing border-box
 
 .container
-  max-width 1000px
+  max-width 750px
   margin 100px auto 0
   padding 0 20px
+
+.wrapper
+  background-color #F5F5FF
+  border 1px solid #D5D5D5
 
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your stylus files automatically */
