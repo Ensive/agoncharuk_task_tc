@@ -13,7 +13,7 @@
 
   <!-- results section-->
   <div class="results">
-    <div class="results__info">Converting {{ penniesFiltered }} into coins.</div>
+    <div class="results__info">Converting {{ penniesFiltered }} pennies into coins.</div>
 
     <!-- table -->
     <div class="results__table-wrapper">
@@ -22,7 +22,10 @@
           <th>Coin</th>
           <th>Amount</th>
         </tr>
-        <!--<tr ng-repeat=""></tr>-->
+        <tr ng-repeat="coin in coins" ng-if="coin.amount !== 0">
+          <td>{{ coin.nominal }}</td>
+          <td>{{ coin.amount }}</td>
+        </tr>
       </table>
     </div>
 

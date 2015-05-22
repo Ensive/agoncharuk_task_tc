@@ -21,7 +21,7 @@
     return Convert;
 
     // converting
-    function Convert(pennies) {
+    function countCoins(pennies) {
       // define empty array
       var coinsArray = [];
 
@@ -42,6 +42,49 @@
 
       console.log(coinsArray);
       return coinsArray;
+    }
+
+    // @todo: use a Promise
+    function Convert(pennies) {
+      var coins, coinsObjects;
+
+      // count coins
+      coins = countCoins(pennies);
+
+      // empty array
+      coinsObjects = [];
+
+      // forming the particular coins objects
+      for (var i = 0, length = coins.length; i < length; i += 1) {
+
+        switch (i) {
+          case 0:
+            coinsObjects.push({ amount: coins[i], nominal: '2£' });
+            break;
+          case 1:
+            coinsObjects.push({ amount: coins[i], nominal: '1£' });
+            break;
+          case 2:
+            coinsObjects.push({ amount: coins[i], nominal: '50p' });
+            break;
+          case 3:
+            coinsObjects.push({ amount: coins[i], nominal: '20p' });
+            break;
+          case 4:
+            coinsObjects.push({ amount: coins[i], nominal: '2p'});
+            break;
+          case 5:
+            coinsObjects.push({ amount: coins[i], nominal: '1p'});
+            break;
+          default:
+            break;
+        }
+        // end switch
+      }
+      // end for
+
+      return coinsObjects;
+
     }
 
   }
