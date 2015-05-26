@@ -8,8 +8,9 @@
     .controller('MainCtrl', ['$scope', 'Parse', 'Convert', MainCtrl]);
 
   function MainCtrl($scope, Parse, Convert) {
-    // declare pennies
+    // declare pennies and coins
     $scope.pennies = null;
+    $scope.coins = null;
 
     // submit function
     $scope.submit = submit;
@@ -25,6 +26,10 @@
       } else {
         // get the coins objects
         $scope.coins = Convert($scope.penniesFiltered);
+
+        if (!$scope.coins) {
+
+        }
       }
 
     }

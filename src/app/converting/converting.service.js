@@ -46,6 +46,10 @@
 
     // @todo: use a Promise
     function Convert(pennies) {
+      if (!pennies) {
+        return false;
+      }
+
       var coins, coinsObjects;
 
       // count coins

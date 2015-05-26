@@ -1,22 +1,35 @@
 'use strict';
 
-describe('controllers', function(){
-  var scope;
+describe('Main Ctrl', function(){
+  var $rootScope, $scope, controller;
 
+  // include main module
   beforeEach(module('agoncharukTaskTc'));
 
-  beforeEach(inject(function($rootScope) {
-    scope = $rootScope.$new();
+  // injecting
+  beforeEach(inject(function($injector) {
+    $rootScope = $injector.get('$rootScope');
+    $scope = $rootScope.$new();
+    controller = $injector.get('$controller')('MainCtrl', { $scope: $scope });
   }));
 
-  it('should define more than 5 awesome things', inject(function($controller) {
-    expect(scope.awesomeThings).toBeUndefined();
-
-    $controller('MainCtrl', {
-      $scope: scope
+  // pennies value
+  describe('Pennies', function () {
+    it('initially should be null', function () {
+      expect($scope.pennies).toBeNull();
     });
+  });
 
-    expect(angular.isArray(scope.awesomeThings)).toBeTruthy();
-    expect(scope.awesomeThings.length > 5).toBeTruthy();
-  }));
+  // submit function
+  describe('Submit', function () {
+    it('should be a function', function () {
+      expect(angular.isFunction($scope.submit)).toBeTruthy();
+    });
+  });
+
+  // coins
+  describe('Coins', function () {
+    it('should be a null initially')
+  })
+
 });
