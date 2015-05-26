@@ -3,10 +3,12 @@ This simple application takes a given number of pennies and calculates the minim
 
 ## Setting up
 
-Install the required tools: `yo`, `gulp`, `bower`
+Install the required tools: `gulp`, `bower`
 ```
-npm install -g yo gulp bower
+npm install -g gulp bower
 ```
+
+**Note**: `node` and `npm` should be installed on your machine
 
 Install the dependencies
 ```
@@ -24,4 +26,5 @@ npm install && bower install
 
 ## Production version
 The production version is located in `dist/` folder
+
 To run it just open `index.html` file
