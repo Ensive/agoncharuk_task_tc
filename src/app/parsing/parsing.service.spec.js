@@ -1,16 +1,20 @@
 'use strict';
 
-describe('Parsing function', function () {
-  var $rootScope, $scope, service;
+describe('Parse', function () {
+  var Parse;
 
-  beforeEach(function () {
-    module('agoncharukTaskTc');
+  // include main module
+  beforeEach(module('agoncharukTaskTc'));
 
-    inject(function () {
-      $rootScope = $injector.get('$rootScope');
-      $scope = $rootScope.$new();
-      service = $injector.get('$service')('Parse', { $scope: $scope});
-    });
+  // injecting factory
+  beforeEach(inject(function ($injector) {
+    Parse = $injector.get('Parse');
+  }));
+
+  it('should parse a string and return a number', function () {
+    expect(Parse('£1000p')).toEqual(100000);
+    expect(Parse('£10.40p')).toEqual(1040);
+    expect(Parse('£2')).toEqual(200);
   });
 
 });

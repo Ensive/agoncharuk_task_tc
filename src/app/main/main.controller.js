@@ -14,8 +14,12 @@
 
     // submit function
     $scope.submit = submit;
+    $scope.clearResults = clearResults;
 
-    // submitting the form
+    /**
+     * Submit form function
+     * @param {String|Number} pennies
+     */
     function submit(pennies) {
       // assign cleared value
       $scope.penniesFiltered = Parse(pennies);
@@ -23,15 +27,29 @@
       // check the value
       if (!$scope.penniesFiltered) {
 
+        // assign zero
+        $scope.penniesFiltered = 0;
+
+        // specify the error message
+        $scope.errorMessage = 'The value "' + $scope.pennies + '" is invalid, try a different one, please.';
+
       } else {
+
+        // clear the error message
+        $scope.errorMessage = null;
+
         // get the coins objects
         $scope.coins = Convert($scope.penniesFiltered);
-
-        if (!$scope.coins) {
-
-        }
       }
 
+    }
+
+    /**
+     * Remove error on change
+     */
+    function clearResults() {
+      $scope.errorMessage = '';
+      $scope.coins = null;
     }
 
   }

@@ -18,6 +18,11 @@ describe('MainCtrl', function () {
     expect(val).toBeNull();
   }
 
+  /**
+   * Helper function to check how the parsing function works
+   * @param {String|Number} inputVal
+   * @param {Number} outputVal
+   */
   function isCorrectlyParsed(inputVal, outputVal) {
     $scope.pennies = inputVal;
     $scope.submit($scope.pennies);
@@ -55,19 +60,20 @@ describe('MainCtrl', function () {
   // after execution of the submit function
   describe('$scope.submit function', function () {
 
+    // check for correct parsing
     it('should parse the input value', function () {
+      // test simple digits
       isCorrectlyParsed(4, 4);
-      isCorrectlyParsed('4', 4);
-
       isCorrectlyParsed(85, 85);
-      isCorrectlyParsed('85', 85);
 
+      // test simple strings with 'p'
       isCorrectlyParsed('197p', 197);
       isCorrectlyParsed('2p', 2);
 
+      // test value with decimal point
       isCorrectlyParsed(1.87, 187);
-      isCorrectlyParsed('1.87', 187);
 
+      // test common input values
       isCorrectlyParsed('£1.23', 123);
       isCorrectlyParsed('£2', 200);
       isCorrectlyParsed('£10', 1000);
@@ -77,6 +83,17 @@ describe('MainCtrl', function () {
       isCorrectlyParsed('001.41p', 141);
       isCorrectlyParsed('4.235p', 424);
       isCorrectlyParsed('£1.257422457p', 126);
+
+      // test the behavior when use typed non-valid entries
+      isCorrectlyParsed('customStringWithoutDigits', 0);
+      isCorrectlyParsed(null, 0);
+      isCorrectlyParsed('', 0);
+      isCorrectlyParsed(undefined, 0);
+      isCorrectlyParsed('1x', 0);
+      isCorrectlyParsed('£1x.0p', 0);
+      isCorrectlyParsed('£p', 0);
+      isCorrectlyParsed('£££150p', 0);
+      isCorrectlyParsed('£150ppp', 0);
     });
 
     it('should calculate the minimum number of Sterling coins to make that amount (input value)', function () {

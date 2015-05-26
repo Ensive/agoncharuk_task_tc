@@ -17,14 +17,25 @@
      */
     function Parse(string) {
 
-      // check for invalid inputs
-      if (string === '' || string === null || string === undefined) {
-        console.log('Value is invalid.');
-        return 0;
+      // if entered value is empty string or undefined or null or 0 - returns false
+      if (!string) {
+        return false;
       }
 
       // convert input value to string
       var str = string.toString();
+
+      // check, if the string contains duplicates of the particular symbols (p or £) then invalid value was entered
+      var matchMoreThanOnePound = str.match(/£/g) ? str.match(/£/g).length > 1 : false;
+      var matchMoreThanOnePence = str.match(/p/gi) ? str.match(/p/gi).length > 1 : false;
+
+      // common checks
+      var isValueInvalid = matchMoreThanOnePence || matchMoreThanOnePound || str.match(/[^p£\d\.]/gi) || !str.match(/\d/g);
+
+      // if input is invalid - returns false
+      if (isValueInvalid) {
+        return false;
+      }
 
       // "flags" for pound and pence symbols
       var matchPound = str.match(/£/g) ? str.match(/£/g).length === 1 && str.match(/^£/g).length === 1 : false;
@@ -52,8 +63,6 @@
 
       } else {
         // no matches for pence and pound
-        console.log('Default number');
-        console.log('Default string', str);
         return processingStringWithDot(str);
       }
 
@@ -84,7 +93,7 @@
         firstPartOfNumber = parseInt(string.split('.')[0], 10) * 100;
         secondPartOfNumber = string.split('.')[1] ? parseInt(string.split('.')[1], 10) : 0;
 
-        // form and return the number
+        // concat and return the number
         return firstPartOfNumber + secondPartOfNumber;
 
       } else if (isMoreThanOneDot) {

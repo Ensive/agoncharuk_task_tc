@@ -40,7 +40,6 @@
       }
       // end for
 
-      console.log(coinsArray);
       return coinsArray;
     }
 

@@ -22,11 +22,6 @@
     border 1px solid #d5d5d5
     float: left
 
-  //&__field.ng-invalid
-  //  border-color red
-  //&__field.ng-valid
-  //  border-color green
-
   &__button
     margin 0 0 0 5px
     font-size 1.1em
@@ -74,5 +69,38 @@
     th:last-of-type,
     td:last-of-type
       text-align right
+
+  &.error
+    padding 5px 8px
+    border-radius 4px
+    border 1px solid #ebccd1
+    color #a94442
+    background-color #f2dede
+
+
+// responsive styles
+@media only screen and (max-width 620px)
+
+  .input-section
+    &__text
+      width 100%
+      margin-bottom 7px
+
+    &__field
+      width 70%
+
+    &__button
+      width 29%
+      margin 0 0 0 1%
+
+@media only screen and (max-width 400px)
+
+  .input-section
+    &__field
+      width 100%
+
+    &__button
+      width 100%
+      margin: 5px 0 0
 
 
