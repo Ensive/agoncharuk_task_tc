@@ -13,7 +13,4 @@ describe('Parsing function', function () {
     });
   });
 
-  //beforeEach(inject('agoncharukTaskTc'));
-
-  //before
 });

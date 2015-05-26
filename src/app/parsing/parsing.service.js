@@ -10,7 +10,11 @@
   function ParseService() {
     return Parse;
 
-    // main parse function
+    /**
+     * Main parsing function
+     * @param {String|Number} string
+     * @returns {*}
+     */
     function Parse(string) {
 
       // check for invalid inputs
@@ -90,15 +94,6 @@
         return parseInt(string, 10);
       }
 
-    }
-
-    /**
-     * Helper function to remove zeros at the beginning
-     * @param string
-     * @returns {string}
-     */
-    function removeZeros(string) {
-      return parseFloat(string).toString();
     }
 
   }
